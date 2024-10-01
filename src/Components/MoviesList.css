@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    overflow-x: scroll;
+
+
+}
+
+img {
+    height: 40vh;
+    width: 35vh;
+    object-fit: contain;  
+}
+
+img:hover{
+    cursor: pointer;
+    transition: transform .2s;
+    transform: scale(1.08)
+}
+/* 
+.favmovielist{
+    display: block;
+} */
