@@ -41,6 +41,7 @@ const MoviesList = (props) => {
       <div>
         <div className="favmovielist">
           <img src={favMovies.Poster} alt="movie" key={favMovies.imdbID}></img>
+          sdfsdfsdf
         </div>
       </div>
     </div>
