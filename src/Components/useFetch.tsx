@@ -1,29 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url,input) => {
+  const [moviesList, setMoviesList] = useState([]);
 
-    const [moviesList, setMoviesList] = useState([])
-
-
-
-  const fetchDetails = async () => {
+  const fetchDetails = async (input) => {
     try {
-      const response = await fetch(`${url}`)
-      const data = await response.json()
-      setMoviesList(data.Search)
+      const response = await fetch(`${url}`);
+      const data = await response.json();
+      setMoviesList(data.Search);
+    } catch (error) {
+      console.error(error);
     }
-    catch (error) {
-      console.error(error)
-    }
-  }
+  };
 
   useEffect(() => {
-    fetchDetails()
-  }, [])
+    //fetchDetails();
+    if(input){
+      fetchDetails(input)
+    }
+  }, [input]);
 
   return {
-    moviesList
-  }
-}
+    moviesList,
+  };
+};
 
-export default useFetch
+export default useFetch;
