@@ -1,22 +1,48 @@
+
 .container {
-    display: flex;
-    overflow-x: scroll;
-
-
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 img {
-    height: 40vh;
-    width: 35vh;
-    object-fit: contain;  
+  height: 40vh;
+  width: 35vh;
+  object-fit: contain;
 }
 
-img:hover{
-    cursor: pointer;
-    transition: transform .2s;
-    transform: scale(1.08)
+img:hover {
+  cursor: pointer;
+  transition: transform 0.2s;
+  transform: scale(1.08);
 }
-/* 
-.favmovielist{
-    display: block;
-} */
+
+.inline-container {
+  display: flex;
+  float: left;
+  overflow-x: auto;
+}
+
+.favmovielist {
+  display: inline-block;
+  animation: slidein 2s forwards;
+
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.moviesearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
