@@ -1,13 +1,11 @@
-import SearchAPI from './Components/SearchAPI';
+import SearchAPI from "./Components/SearchAPI";
 
 function App() {
-
-
   return (
-    <div>
+    <div className="global-container">
       <SearchAPI />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

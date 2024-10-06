@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useEffect, useState } from "react";
 import "./MoviesList.css";
 
 const MoviesList = (props) => {
@@ -14,7 +14,20 @@ const MoviesList = (props) => {
   //   });
   // };
 
-  function selectFav(newmovie:string) {
+  // useEffect(() => {
+  //   localStorage.setItem("Newitems", JSON.stringify(favMovies));
+  // }, [favMovies]);
+
+  // localStorage.setItem("Newitems", JSON.stringify(favMovies));
+
+  // useEffect(() => {
+  //   const items = JSON.parse(localStorage.getItem("Newitems"));
+  //   if (items) {
+  //     setFavMovies(items);
+  //   }
+  // }, []);
+
+  function handleSelect(newmovie) {
     setFavMovies((prevSelectedMovies) => {
       if (!prevSelectedMovies) {
         prevSelectedMovies = [];
@@ -27,13 +40,28 @@ const MoviesList = (props) => {
     });
   }
 
+  function handleDelete(deleteFav){
+    setFavMovies((prevSelectedMovies) => {
+      if (!prevSelectedMovies) {
+        prevSelectedMovies = [];
+      }
+      if (prevSelectedMovies)
+      {
+        const newFavMovies=prevSelectedMovies.filter((fMovie) => fMovie.imdbID != deleteFav.imdbID)
+        return [...newFavMovies];
+      }
+      
+      console.log(prevSelectedMovies)
+    });
+  }
+
   return (
     <div>
       <div className="container">
         <h2>Select your Fav</h2>
         {props.list.map((movie) => (
           <div className="moviesscroll">
-            <a onClick={() => selectFav(movie)}>
+            <a onClick={() => handleSelect(movie)}>
               <img src={movie.Poster} alt="movie" key={movie.imdbID}></img>
             </a>
           </div>
@@ -44,7 +72,7 @@ const MoviesList = (props) => {
           <h1>No Movies</h1>
         ) : (
           favMovies.map((selectedFavMovies) => (
-            <div className="favmovielist">
+            <div className="favmovielist" onClick={()=>handleDelete(selectedFavMovies)} >
               <img
                 src={selectedFavMovies.Poster}
                 alt="movie"
