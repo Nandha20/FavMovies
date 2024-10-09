@@ -4,7 +4,7 @@ import useFetch from "./useFetch";
 import { useEffect, useState } from "react";
 
 const SearchAPI = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState();
   const [moviesList, setMoviesList] = useState([]);
   //const { moviesListvalues } = useFetch(BASE_URL,value);
 
@@ -21,6 +21,7 @@ const SearchAPI = () => {
         console.log(results[0]);
       });
   };
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchDetails(input);
